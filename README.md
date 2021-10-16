@@ -1,9 +1,9 @@
 ## DevOps
 
-Antes de emitir qualquer opinião pessoal, é interessante observar o que as bigtech's dizem sobre devops:
-
 <details>
 <summary>O que é DevOps?</summary><br><b>
+
+Antes de emitir qualquer opinião pessoal, é interessante observar o que as bigtech's dizem sobre devops:
 
 Microsoft:
 
@@ -86,9 +86,46 @@ A de Automação
 Quando falamos de DevOps, queremos eliminar o máximo de trabalho laboral possível, trabalho laboral é aquele trabalho repetitivo. Se você, por exemplo, gasta todo dia 30 minutos para efetuar uma determinada ação, porque não gastar um tempo superior, como, por exemplo, 2 horas para automatizar esta rotina e poupar esses 30 minutos a partir de então?
 
 M de Medição
+* Meça os resultados
 
+Precisamos medir tudo que é possível: de processos a pessoas. Afinal, a única maneira de verificar se estamos no caminho certo ou melhorando é através da medição. O processo de melhoria contínua é o coração do DevOps!
 
+S de Compartilhamento
+Compartilhando feedbacks
 
+Ambientes DevOps têm como uma das características fundamentais a cultura Blameless ou, em português, “Sem Culpa”, que é exatamente o que cria um ambiente propício ao compartilhamento. Não é sobre ninguém ser culpado por uma determinada ação que levou os sistemas a ficarem indisponíveis, é sobre todos se sentirem seguros e não terem medo de cometer erros. O erro faz parte do processo de aprendizado e deve ser compartilhado, assim como todas as melhorias que aplicamos em nosso ambiente de trabalho
 
 </b></details>
 
+<details>
+<summary>Conhecimentos e tecnologias</summary><br><b>
+
+![Devops roadmap](https://roadmap.sh/roadmaps/devops.png)
+
+Fonte: https://roadmap.sh/devops
+
+</b></details>
+
+<details>
+<summary>Lab</summary><br><b>
+
+1. Crie um projeto no github
+
+2. Add o Dockerfile
+
+```Dockerfile
+FROM debian:9.5-slim
+
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+```
+3. crie o arquivo entrypoint.sh com o seguinte conteúdo
+
+```bash
+#!/bin/sh -l
+
+sh -c "echo Hello world my name is $INPUT_MY_NAME"
+```
+
+</b></details>
