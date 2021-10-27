@@ -569,12 +569,17 @@ em comparação com esforços humanos, aplicação de práticas e ferramentas de
 são consistentes com muitas práticas e dos principios de SRE. Poderíamos ver o Devops como uma generalização de vários
 principios essencias de SRE para uma variedade maior de organizações, estruturas gerenciais e recursos humanos.
 Do mesmo modo, poderíamos ver a SRE como uma implementação especifica de Devops, com algumas extensões idiossincráticas.
+
 ---
 
-Bibliografia
+# Bibliografia
 
 [Transformação Digital - Redhat](https://www.redhat.com/pt-br/engage/digital-transformation-culture-innovation-20181113)
 
 [Como ensinar um elefante a dançar - Redhat](https://www.redhat.com/pt-br/engage/teaching-an-elephant-to-dance)
 
 [Devops Essentials - 4linux](https://4linux.com.br/cursos/treinamento/devops-essentials/)
+
+[Site Reliability Engineer - Google](https://sre.google/sre-book/table-of-contents/)
+
+[Site Reliability Engineer - Google (PT-BR)](https://elven.works/pt/livro-sre-google/)
