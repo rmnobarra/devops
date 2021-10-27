@@ -230,11 +230,178 @@ Transformação digital é uma mudança de mentalidade que as empresas passam co
 </b></details>
 
 <details>
-<summary>Devops e transformação Digital</summary><br><b>
+<summary>Devops & Transformação Digital</summary><br><b>
+
+DevOps e mudança nos processos
+
+A base da evolução digital é o DevOps. Assim como a estratégia corporativa, os aplicativos são um
+reflexo das equipes e da comunicação entre elas. DevOps, ou mudanças similares nos processos,
+faz com que mais stakeholders participem das discussões de desenvolvimento e, assim, oferecer
+insights mais amplos sobre como a equipe de operações mantém o software e a infraestrutura e
+como clientes e parceiros realmente usam esses aplicativos. Ele cria um ciclo de feedback mais
+fechado entre as equipes, com linhas abertas de comunicação. E essa comunicação aberta é a base
+para qualquer outra etapa da evolução.
+
+Infraestrutura de autosserviço
+
+Essa etapa consiste em uma mudança focada na tecnologia. Ela introduz eficiências que
+geralmente estão associadas a plataformas de tecnologias modernas. Com containers e catálogos
+de autosserviço, os grupos de desenvolvedores, testes e operações podem acionar ambientes
+consistentes com muita rapidez. Em algumas organizações, o tempo de provisionamento de novas
+instâncias é reduzido de dias para minutos. Os profissionais de TI não precisam esperar dias por um
+recurso de computação.
+
+Automação e orquestração
+
+Adotar a automação exige uma mudança em dois ângulos: o tecnológico, com plataformas
+avançadas de implantação como o Terraform, Ansible ou Chef, mas há também a necessidade de
+realizar mudanças nos processos. Várias organizações adotam processos rigorosos de mudança e
+gerenciamento de riscos. Mas para aproveitar os benefícios das novas tecnologias, é preciso adaptar
+os processos com o uso de metodologias mais ágeis.
+
+Pipelines de integração e entrega contínuas (CI/CD)
+
+Com a entrega contínua, é possível fazer mudanças no software com rapidez e iteratividade. A ideia
+de um pipeline é de que haja processos e tecnologias em execução capazes de reduzir o risco de
+códigos com baixa qualidade (ou quebrados) chegarem até a fase de implantação. Essa etapa mostra
+a maturidade dos estágios anteriores: DevOps e comunicação aberta entre as equipes, processos de
+testes e compilações em execução, além de teste e implantação automatizados. Quando todos esses
+estágios são sólidos, é possível usar os códigos com rapidez. Esse é o pipeline.
+
+Caminhos avançados de implantação
+
+Uma vez que os processos e a infraestrutura estiverem voltados para implantações rápidas,
+será possível usar os sistemas para mitigar os riscos das atualizações, avaliar a eficiência da
+funcionalidade e realizar testes reais para gerar novas ideias. Isso inclui ter ambientes separados
+e balanceamento de carga entre eles durante as implantações (chamadas de “blue-green
+deployments”). Nesse processo, são usados dois ambientes diferentes para testar a interação do
+usuário (teste A/B) ou fazer atualizações para uma pequena porcentagem de usuários e, de modo
+seguro, aumentar esse número gradativamente (conhecido como "canary deployments").
+
+Microsserviços ou sistemas distribuídos
+
+Um microsserviço é uma aplicação pequena que realiza uma única função separada. A arquitetura
+geral de aplicativos pode precisar realizar dezenas ou centenas de funções diferentes, cada uma
+definida e orquestrada em um microsserviço. A arquitetura de microsserviços, como qualquer outra
+de computação distribuída, é complexa e simples ao mesmo tempo. Serviços individuais são muito
+mais simples e fáceis de manter, adicionar e descontinuar. Já a arquitetura geral é mais complexa.
+Quando criado corretamente, um “projeto baseado em microsserviços é o melhor resultado de todo
+o conhecimento adquirido sobre um bom design de aplicativos”. 5 Com essa arquitetura altamente
+distribuída, você escala com mais facilidade, introduz novos serviços e atualizações com mais
+simplicidade e reduz o risco de falhas no sistema. Por conta dessa elasticidade na arquitetura, os
+microsserviços são muito associados a empresas inovadoras como a Netflix e a Google.
 
 
 </b></details>
 
+<details>
+<summary>Devops & Cultura</summary><br><b>
+
+Cultura em primeiro lugar
+
+É importante notar que a evolução do software não é apenas uma mudança na
+tecnologia. Ela alterna entre mudanças em processos, equipes e infraestrutura, e as modificações
+culturais são infinitamente mais importantes. 
+
+É possível criar o diagrama de arquitetura mais perfeito e desejado. Depois de envolver as equipes
+e os processos, é preciso criar um ambiente cultural que ofereça suporte à entrega contínua e
+à disciplina no uso da arquitetura. Porque uma mudança nos processos ou na estrutura não é
+duradoura. As pessoas não são como os computadores que seguem regras. Portanto,
+as estruturas legadas da organização sempre destruirão a sua bela arquitetura.”
+
+Para que o software e a tecnologia evoluam, o segredo é pensar na evolução como um processo
+natural do ambiente. Em uma empresa, isso é a cultura. Para garantir isso, as mudanças
+necessárias podem ter o suporte do gerenciamento, mas não podem ser impostas por ele. As
+pessoas precisam querer mudar. É uma questão de livre-arbítrio, e não imposição.
+
+O Gartner tem um dado que explica isso melhor: “90% das organizações que tentam usar o DevOps
+sem mudar especificamente a cultura falham.” 8
+
+É fácil mudar a infraestrutura e a arquitetura de aplicativos. Mas para fazer isso efetivamente,
+primeiro é necessário realizar uma mudança cultural.
+
+A Lei de Conway diz: “Qualquer organização que criar um sistema, inevitavelmente, produzirá um
+projeto com uma estrutura igual a da comunicação da organização.” Isso pode ser interpretado de
+duas formas:
+
+• Mudanças na arquitetura ou infraestrutura não terão qualquer efeito, a menos que você também
+modifique a estrutura de comunicação.
+
+• Alterações na estrutura de comunicação resultarão em melhores processos e infraestrutura
+(independentemente da infraestrutura atual).
+
+</b></details>
 
 
-[Transformação Digital](https://www.redhat.com/pt-br/engage/digital-transformation-culture-innovation-20181113)
+<details>
+<summary>Devops como primeiro passo</summary><br><b>
+
+A metodologia ágil é uma abordagem de design de software que tenta unir todas as partes
+envolvidas em um grupo mais coeso. Isso inclui QA, gerenciamento de solução, desenvolvedores e
+até mesmo documentação. A ideia é esclarecer os objetivos com pequenas iterações que têm como
+foco tarefas específicas expressas como metas do usuário (chamadas de histórias). Isso derrubou
+o tradicional modelo cascata do desenvolvimento de software, em que o processo passava de uma
+equipe para outra.
+
+No entanto, a metodologia ágil ainda lida somente com metade do verdadeiro ciclo de vida de
+um aplicativo. Depois de desenvolvido, o aplicativo é transferido para a equipe de operações. Ela
+fica responsável pela implantação e manutenção, que acontece geralmente em um período de
+manutenção no fim de semana.
+
+O problema é que essa equipe nem sempre sabe o propósito do aplicativo, o que pode gerar uma
+implantação menos eficiente. Os desenvolvedores podem não ter conhecimento sobre o verdadeiro
+ambiente operacional e criar um aplicativo que não tenha um bom desempenho no ambiente de
+produção. Então, para mitigar o risco de alterações, muitas organizações instituem um processo
+oneroso de gerenciamento de mudanças para tentar explicar e justificar qualquer alteração.
+
+O DevOps é uma mudança cultural que tenta acabar com a separação entre os desenvolvedores,
+equipe de operações e stakeholders. A separação entre esses grupos é real, mas artificial. Uma
+equipe pode ser formada com profissionais de diversas funções. O DevOps tenta redefinir a equipe
+para incluir todos os grupos envolvidos no ciclo de vida de um aplicativo e criar uma abertura na
+comunicação entre esses grupos.
+
+Os efeitos da mudança na cultura são muito mais profundos que DevOps, metodologias ágeis e
+outros modelos. É o compromisso de realmente colocar todos no mesmo time. Ao mudar os padrões
+de comunicação, você modifica seus resultados.
+
+Com algumas etapas bem simples, grandes mudanças podem surgir. A cultura é a base para todas
+as modificações tecnológicas e de processos. Se estiver com dificuldades para criar uma cultura de
+DevOps, experimente o seguinte:
+
+Ver como as outras equipes funcionam na prática pode ser um ótimo jeito de incentivá-las a mudar
+os processos e abrir a comunicação.
+
+O relatório “Puppet’s State of DevOps” mostra a eficácia alcançada ao mudar a estrutura e a
+comunicação da equipe. 11 O estudo revelou que as equipes de DevOps alcançam:
+
+• Tempo de provisionamento 2.555 vezes mais rápido.
+
+• 200 vezes mais implantações.
+
+• Recuperação de falhas 24 vezes mais rápida.
+
+• Taxa de falhas na mudança 3 vezes menor.
+
+• 22% menos tempo gasto em retrabalho.
+
+A rapidez é uma das principais vantagens do DevOps. Ao analisarmos todo o processo de
+lançamento, fica claro a necessidade de ter todas essas diferentes equipes envolvidas para a
+disponibilização de um aplicativo. O nível de esforço para o lançamento desse aplicativo irá
+depender da transparência e clareza dos processos, infraestrutura e base de códigos.
+
+</b></details>
+
+
+<details>
+<summary>SRE - Site Reliability Engineer (Engenheiro de Confiabilidade de Sites)</summary><br><b>
+
+</b></details>
+---
+
+Bibliografia
+
+[Transformação Digital - Redhat](https://www.redhat.com/pt-br/engage/digital-transformation-culture-innovation-20181113)
+
+[Como ensinar um elefante a dançar - Redhat](https://www.redhat.com/pt-br/engage/teaching-an-elephant-to-dance)
+
+[Devops Essentials - 4linux](https://4linux.com.br/cursos/treinamento/devops-essentials/)
