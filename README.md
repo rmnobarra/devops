@@ -395,7 +395,180 @@ depender da transparência e clareza dos processos, infraestrutura e base de có
 <details>
 <summary>SRE - Site Reliability Engineer (Engenheiro de Confiabilidade de Sites)</summary><br><b>
 
+SREs são, antes de tudo, Engenheiros. Profissionais de diferentes áreas da TI que aplicam os princípios da ciência da computação e da engenharia ao desenvolvimento de sistemas. Em geral, são grandes sistemas distribuídos. Por vezes, o desafio é escrever o software para esses grandes sistemas para que funcionem juntamente com as outras partes de desenvolvimento do produto. Em outras ocasiões, porém, a tarefa passa a ser construir todas as peças adicionais de que esses sistemas precisam, como backups ou balanceamento de carga, para que possam ser reutilizadas em todos os sistemas. De maneira geral, pode-se dizer que a tarefa dos SREs é descobrir como aplicar soluções existentes a novos problemas.
+
+Em seguida, temos a questão fundamental da confiabilidade do sistema. Ben Treynor Sloss, VP de Engenharia do Google , foi quem criou o termo SRE. Ben afirma que a Confiabilidade é o recurso mais essencial de qualquer Produto. Afinal, um sistema não é muito útil se ninguém puder usá-lo, não é mesmo? Para o propósito destes posts (e do livro SRE do Google), a confiabilidade vem a ser “a probabilidade de que [um sistema] execute uma função exigida, sem falha, nas condições estabelecidas por um determinado período de tempo”. Assim como os sistemas de software com os quais estamos preocupados aqui são, em grande parte, sites e serviços semelhantes; não estamos discutimos as preocupações de confiabilidade enfrentadas por softwares destinados a usinas nucleares, aeronaves, equipamentos médicos ou outros sistemas críticos em termos de segurança.
+
+Como a confiabilidade é algo tão crucial, os SREs se concentram em encontrar maneiras de melhorar o projeto e a operação dos sistemas para torná-los mais escaláveis, confiáveis e eficientes. No entanto, eles despendem esforços nessa direção apenas até certo ponto: quando os sistemas são “confiáveis o suficiente“, eles investem seus esforços na adição de recursos ou na construção de novos produtos. 
+
+SRE é o que acontece quando você pede a um engenheiro de software para projetar uma equipe de operações.
+
+Comum a todos os SREs é a crença e a aptidão para desenvolver sistemas de software a fim de resolver problemas complexos.
+
 </b></details>
+
+<details>
+<summary>Esperança não é uma estratégia</summary><br><b>
+
+Por design, é fundamental que as equipes de SRE estejam focadas em engenharia. Sem uma engenharia constante, a carga
+das operações aumenta e as equipes precisarão de mais pessoas somente para acompanhar esse aumento da carga de trabalho.
+
+Em algum momento no futuro, um grupo tradicional focado em operações escalará linearmente conforme o volume do serviço:
+Se os produtos aos quais o serviço dá suporte forem bem sucedidos, a carga operacional aumentará com o tráfego. Isso
+significa contratar mais pessoas para fazer as mesmas tarefas repetidamente.
+
+Para evitar esse destino, a equipe responsável pelo gerenciamento de um serviço deve escrever código, do contrário
+ficará sobrecarregada. Desse modo, o Google
+coloca um limite de 50% no trabalho agregado de ops para todos os SREs. tickets, plantão, tarefas manuais, etc.
+Esse limite garante que a equipe de SRE tenha emprego suficiente em seus cronogramas para deixar o serviço estável e operacional.
+
+A regra geral é que uma equipe de SRE deve gastar os outros 50% de seu tempo fazendo desenvolvimento.
+
+
+</b></details>
+
+<details>
+<summary>Tarefas Penosas</summary><br><b>
+
+Se um operador humano precisar tocar o sistema durante as operações normais, você tem um bug. A definição de “normal” muda na mesma medida em que seus sistemas evoluem
+
+No SRE, queremos dedicar mais tempo ao trabalho de engenharia de projeto a longo prazo, em vez do mero trabalho operacional. Como o termo trabalho operacional pode ser mal interpretado, usamos uma palavra específica: toil (“trabalho pesado”, na tradução literal em português).
+
+Definição de Toil
+
+Toil não é apenas o “trabalho que ninguém gosta de fazer”. Também não é simplesmente equivalente a tarefas administrativas ou “trabalho sujo”. As preferências quanto aos tipos de trabalho que são satisfatórios e agradáveis variam de pessoa para pessoa, e algumas pessoas até gostam de trabalhos manuais e repetitivos. Há também tarefas administrativas que precisam ser feitas, mas não devem ser categorizadas como toil: isso é sobrecarga.
+
+A sobrecarga costuma ser um trabalho não diretamente vinculado à execução de um serviço de produção e inclui tarefas como reuniões de equipe, definição e classificação de metas – usamos o sistema de objetivos e resultados-chave, desenvolvido por Andy Grove na Intel, snippets (Googlers registram resumos curtos em formato livre, ou “snippets”, do que trabalhamos todas as semanas) ou ainda papelada de RH. O “trabalho sujo” às vezes pode ter um valor de longo prazo e, nesse caso, também não é trabalho pesado. Limpar toda a configuração de alerta para o seu serviço e remover a desordem pode ser sujo, mas não é trabalho pesado.
+
+
+Então, o que é toil? Toil é o tipo de trabalho vinculado à execução de um serviço de produção que tende a ser manual, repetitivo, automatizado, tático, desprovido de valor duradouro e que escala linearmente à medida que o serviço cresce. Nem toda tarefa considerada toil contempla todos esses atributos, porém quanto mais de perto o trabalho corresponder a uma ou mais das seguintes descrições, mais provável será que se trata de um toil:
+
+Manual
+
+Isso inclui trabalhos como a execução manual de um script que automatiza algumas tarefas. Executar um script pode ser mais rápido do que executar manualmente cada etapa do mesmo, mas o tempo prático que um ser humano gasta executando esse script (não o tempo em si decorrido) ainda é um tempo de trabalho toil.
+
+
+Repetitivo
+
+Se você está realizando uma tarefa pela primeira vez, ou mesmo pela segunda vez, este trabalho não é toil. Toil é o trabalho que você faz continuamente. Se você está resolvendo um novo problema ou inventando uma nova solução, este trabalho não é toil.
+
+
+Automatizável
+
+Se uma máquina pode realizar a tarefa tão bem quanto um ser humano, ou a necessidade da tarefa pode ser projetada, então essa tarefa é um trabalho toil. Se o julgamento humano é essencial para a tarefa, há uma boa chance de não ser um toil.
+
+É preciso, porém, tomarmos cuidado ao dizer que uma tarefa “não é toil porque requer julgamento humano”. Precisamos pensar cuidadosamente sobre se a natureza da tarefa requer intrinsecamente julgamento humano e não pode ser tratada por um design melhor. Por exemplo, alguém poderia construir (e alguns construíram) um serviço que alerte seus SREs várias vezes ao dia, onde cada alerta requer uma resposta complexa que envolve muito julgamento humano. Esse serviço é mal projetado, com complexidade desnecessária. O sistema precisa ser simplificado e reconstruído para eliminar as condições de falha subjacentes ou lidar com essas condições automaticamente.
+Contudo, até que o redesenho e a reimplementação sejam concluídos e o serviço aprimorado seja implementado, o trabalho de aplicar o julgamento humano para responder a cada alerta é, definitivamente, toil.
+
+Tático
+
+O toil é reativo e orientado por interrupções, em vez de proativo e orientado por estratégia. Lidar com alertas de pager é toil. Talvez nunca possamos eliminar totalmente esse tipo de trabalho, mas temos que trabalhar continuamente para minimizá-lo.
+
+
+Sem valor duradouro
+
+Se o seu serviço permanecer no mesmo estado depois de concluir uma tarefa, provavelmente a tarefa foi toil. Se a tarefa produziu uma melhoria permanente em seu serviço, provavelmente não foi toil, mesmo se alguma quantidade de trabalho sujo – como cavar em códigos e configurações legados e corrigi-los – estiver envolvida.
+
+Em linha com a evolução do serviço
+
+Se o trabalho envolvido em uma tarefa aumenta linearmente com o tamanho do serviço, volume de tráfego ou contagem de usuários, essa tarefa provavelmente é toil. Um serviço gerenciado e projetado idealmente pode crescer em pelo menos uma ordem de magnitude com zero trabalho adicional, exceto alguns esforços únicos para adicionar recursos.
+
+
+Por que menos toil é melhor
+Nossa organização SRE tem uma meta anunciada de manter o trabalho operacional (ou seja, toil) abaixo de 50% do tempo de cada SRE. Pelo menos 50% do tempo de cada SRE deve ser gasto no trabalho do projeto de Engenharia que irá reduzir o trabalho futuro ou adicionar recursos de serviço. O desenvolvimento de recursos normalmente se concentra em melhorar a Confiabilidade, o desempenho ou a utilização, o que muitas vezes reduz o toil como um efeito de segunda ordem.
+
+
+Compartilhamos essa meta de 50% porque o toil tende a se expandir se não for verificado e pode comprometer rapidamente 100% do tempo de todos. O trabalho de redução de toil e ampliação de serviços é a “Engenharia” da Engenharia de Confiabilidade do Site (Site Reliability Engineering). O trabalho de Engenharia é o que permite que a organização SRE se expanda sublinearmente com o tamanho do serviço e gerencie os serviços de maneira mais eficiente do que uma equipe de Dev ou de Operações.
+
+Além disso, quando contratamos novos SREs, prometemos a eles que SRE não é uma organização de operações típica, citando a regra de 50% mencionada acima. Precisamos cumprir essa promessa, não permitindo que a organização SRE ou qualquer subequipe dentro dela se transforme em uma equipe de operações.
+
+
+Calculando o toil
+Se buscarmos limitar o tempo que um SRE gasta com trabalho toil para 50%, como esse tempo é gasto?
+
+Há um limite mínimo para a quantidade de trabalho que qualquer SRE precisa lidar se estiver de plantão. Um SRE típico tem uma semana de plantão primário e uma semana de plantão secundário em cada ciclo (para discussão de turnos de plantão primário versus secundário, veja Capítulo 11). Concluiu-se que, em um cenário de rotatividade envolvendo 6 pessoas, pelo menos 2 de cada 6 semanas são dedicadas a turnos de plantão e tratamento de interrupções, o que significa que o limite inferior do trabalho toil é de 2/6 = 33% do tempo de um SRE. Em um cenário de rotatividade envolvendo 8 pessoas, o limite inferior é de 2/8 = 25%.
+
+
+Consistente com esses dados, os SREs relatam que sua principal fonte de trabalho são as interrupções (ou seja, mensagens não urgentes relacionadas ao serviço e e-mails). A próxima fonte principal é a resposta de plantão (urgente), seguida por lançamentos e pushes. Mesmo que nossos processos de lançamento e push sejam geralmente tratados com uma boa quantidade de automação, ainda há muito espaço para melhorias nesta matéria.
+
+Pesquisas trimestrais dos SREs do Google mostram que o tempo médio gasto trabalhando é de cerca de 33%, então nos saímos muito melhor do que nossa meta geral de 50%. No entanto, a média não captura os “pontos fora da curva”: alguns SREs afirmam 0% de toil (projetos de desenvolvimento puro, sem trabalho de plantão) e outros afirmam 80% de toil. Quando SREs destacam toil excessivo, geralmente indica a necessidade de os gerentes distribuírem a carga de trabalho de maneira mais uniforme pela equipe e incentivá-los a encontrar projetos de Engenharia satisfatórios.
+
+
+O que se qualifica como Engenharia?
+O trabalho de Engenharia é novo e intrinsecamente requer julgamento humano. Produz uma melhoria permanente no serviço e é orientado por uma estratégia. Frequentemente, é criativo e inovador, adotando uma abordagem orientada ao design para resolver um problema – quanto mais generalizado, melhor. O trabalho de Engenharia ajuda sua equipe ou a organização SRE a lidar com um serviço maior, ou mais serviços, com o mesmo nível de pessoal/equipe envolvidos no processo.
+
+
+As atividades SRE típicas se enquadram nas seguintes categorias aproximadas:
+
+Engenharia de software
+Envolve escrever ou modificar o código, além de qualquer design e trabalho de documentação associado. Os exemplos incluem escrever scripts de automação, criar ferramentas ou frameworks, adicionar recursos de serviço para Escalabilidade e Confiabilidade ou modificar o código de Infraestrutura para torná-lo mais robusto.
+
+
+Engenharia de sistemas
+Envolve configurar sistemas de produção, modificar configurações ou documentar sistemas de uma forma que produza melhorias duradouras a partir de um esforço único. Os exemplos incluem configuração e atualizações de Monitoramento, configuração de balanceamento de carga, configuração do servidor, ajuste de parâmetros do sistema operacional e configuração do balanceador de carga. A Engenharia de sistemas também inclui consultoria em arquitetura, design e produção para equipes de desenvolvedores.
+
+Toil
+Trabalho diretamente vinculado à execução de um serviço que é repetitivo, manual etc.
+
+Sobrecarga
+Trabalho administrativo não vinculado diretamente à execução de um serviço. Os exemplos incluem contratação, papelada de RH, reuniões de equipe/empresa, higienização de filas de bugs, snippets, revisões de pares e autoavaliações e cursos de treinamento.
+
+Cada SRE precisa despender pelo menos 50% de seu tempo em trabalho de Engenharia, em média em alguns trimestres ou um ano. O trabalho toil tende a ser duro, portanto, 50% do tempo gasto em Engenharia pode não ser realista para algumas equipes SRE, e eles podem cair abaixo dessa meta em alguns trimestres. Mas se a fração de tempo gasta em projetos fica em média significativamente abaixo de 50% no longo prazo, a equipe afetada precisa dar um passo atrás e descobrir o que está errado.
+
+
+O trabalho toil é sempre ruim?
+
+
+O trabalho toil não deixa todos infelizes o tempo todo, especialmente em pequenas quantidades. Tarefas previsíveis e repetitivas podem ser bastante relaxantes. Elas produzem um sentimento de realização e vitórias rápidas. Elas podem ser atividades de baixo risco e baixo estresse. Algumas pessoas gravitam em torno de tarefas que envolvem trabalho toil e podem até gostar desse tipo de trabalho.
+
+O trabalho toil nem sempre é invariavelmente ruim, e todos precisam estar absolutamente certos de que alguma quantidade de trabalho toil é inevitável na função de SRE e, na verdade, em quase qualquer função de Engenharia. É bom em pequenas doses, e se você está feliz com essas pequenas doses, o trabalho toil não é um problema. O trabalho torna-se tóxico quando experimentado em grandes quantidades. Se você está sobrecarregado com muito trabalho, deve se preocupar e reclamar em voz alta. Entre as muitas razões pelas quais muito trabalho toil é ruim, considere o seguinte:
+
+Estagnação de carreira
+
+O progresso da sua carreira diminuirá ou será interrompido se você gastar muito pouco tempo em projetos. O Google recompensa o trabalho sujo quando é inevitável e tem um grande impacto positivo, mas você não pode fazer carreira indo apenas nessa direção.
+
+Moral baixo
+
+As pessoas têm limites diferentes para a quantidade de trabalho que podem tolerar, mas todas têm um limite. Muito trabalho toil leva ao esgotamento, ao tédio e, por fim, ao descontentamento.
+
+Além disso, gastar muito tempo com trabalho toil em detrimento do tempo gasto com Engenharia prejudica uma organização SRE das seguintes maneiras:
+
+Cria confusão
+
+Trabalhamos muito para garantir que todos os que trabalham na/ou com a organização SRE entendam que somos uma organização de Engenharia de projetos. Indivíduos ou equipes de dentro do SRE que se envolvem em muito trabalho toil prejudicam a clareza dessa comunicação e confundem as pessoas sobre o papel de cada um na equipe.
+
+Retarda o progresso
+
+O trabalho toil excessivo torna a equipe menos produtiva. A velocidade da feature de um Produto diminuirá se a equipe SRE estiver muito ocupada com trabalho manual e combate a incêndios para lançar novas features imediatamente.
+
+Define precedente
+
+Se você estiver muito disposto ao trabalho toil, seus colegas Dev terão incentivos para sobrecarregá-lo com ainda mais trabalho, às vezes alterando as tarefas operacionais que deveriam ser desempenhadas pelos Devs para o SRE. Outras equipes também podem começar a esperar que os SREs realizem esse trabalho, o que é ruim por razões óbvias.
+
+Promove atrito
+
+Mesmo que você não esteja pessoalmente infeliz com o trabalho toil, seus atuais ou futuros companheiros de equipe podem gostar muito menos. Se você construir muito trabalho toil nos procedimentos de sua equipe, você motiva os melhores engenheiros a começar a procurar por um trabalho mais gratificante em outro lugar.
+
+Causa violação de fé
+
+As novas contratações ou transferências que ingressaram no time SRE com a promessa de um projeto de trabalho se sentirão enganadas, o que é ruim para o moral de todos os envolvidos.
+
+Conclusão
+
+Se todos nós nos comprometermos a eliminar um pouco de trabalho toil a cada semana com alguma boa Engenharia, iremos continuamente limpar nossos serviços e podemos mudar nossos esforços coletivos para a Engenharia em escala, arquitetando a próxima geração de serviços e construindo conjuntos de ferramentas SRE cruzadas. Em resumo, vamos inventar mais e trabalhar menos.
+
+
+</b></details>
+
+<details>
+<summary>Devops ou SRE?</summary><br><b>
+
+O termo "Devops" surgiu no mercado no final do ano de 2008 e seus principios essenciais - envolvimento
+da função de TI em cada fase do design e do desenvolvimento de um sistema, alta dependencia de automação
+em comparação com esforços humanos, aplicação de práticas e ferramentas de engenharia em tarefas de operação,
+são consistentes com muitas práticas e dos principios de SRE. Poderíamos ver o Devops como uma generalização de vários
+principios essencias de SRE para uma variedade maior de organizações, estruturas gerenciais e recursos humanos.
+Do mesmo modo, poderíamos ver a SRE como uma implementação especifica de Devops, com algumas extensões idiossincráticas.
 ---
 
 Bibliografia
