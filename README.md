@@ -570,9 +570,12 @@ são consistentes com muitas práticas e dos principios de SRE. Poderíamos ver 
 principios essencias de SRE para uma variedade maior de organizações, estruturas gerenciais e recursos humanos.
 Do mesmo modo, poderíamos ver a SRE como uma implementação especifica de Devops, com algumas extensões idiossincráticas.
 
+</b></details>
+
 ---
 
-# Bibliografia
+### Bibliografia
+
 
 [Transformação Digital - Redhat](https://www.redhat.com/pt-br/engage/digital-transformation-culture-innovation-20181113)
 
